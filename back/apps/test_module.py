@@ -6,10 +6,8 @@ import json
 parser = argparse.ArgumentParser(description='Test for modules')
 parser.add_argument('--module', type=str, help='add module you want to test')
 
-# data = 
-# json_data = json.dumps(data)
 
-url = "http://127.0.0.1:8000/code_submit/"
+url = "http://localhost:80/code_run/"
 sub_url = parser.parse_args().module
 # url+=sub_url
 
@@ -17,7 +15,7 @@ my_str = """
 def minus(a, b):
     return (a-b)
 
-a, b = map(int, input().split())
+a, b = 2, 3
 result = minus(a, b)
 print(result)
 """
