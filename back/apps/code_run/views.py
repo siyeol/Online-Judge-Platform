@@ -18,5 +18,5 @@ def code_run(request):
 
     out, err = CodeExecute.code_execute(file_path)
     os.remove(file_path)
-    result_json = json.dumps({"stdout": out, "stderr": err})
+    result_json = {"stdout": out, "stderr": err}
     return JsonResponse(result_json, safe=False)

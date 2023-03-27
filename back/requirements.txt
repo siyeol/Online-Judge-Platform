@@ -66,4 +66,5 @@ wcwidth==0.2.5
 wincertstore==0.2
 wrapt==1.10.11
 zipp==3.5.0
+gevent>=1.4
 gunicorn

@@ -1,34 +1,3 @@
-# # Use the official Python image as the base image
-# FROM python:3.8-slim
-
-# RUN mkdir /app
-
-# # Set the working directory
-# WORKDIR /app
-
-# # Install build dependencies
-# RUN apt-get update && \
-#     apt-get install -y --no-install-recommends gcc python3-dev && \
-#     rm -rf /var/lib/apt/lists/*
-
-# # Copy the requirements file into the container
-# COPY requirements.txt .
-
-# # Install the required packages
-# RUN pip install --no-cache-dir -r requirements.txt
-
-# # Copy the rest of the application code
-# COPY . .
-
-# # Expose the port the app will run on
-# EXPOSE 8000
-
-# ENV PYTHONPATH /app
-
-# # Start the application
-# CMD ["gunicorn", "--bind", "0.0.0.0:8000", "back.oj.wsgi:application"]
-
-
 # Use the official Python image as the base image
 FROM python:3.8-slim
 
@@ -54,5 +23,13 @@ COPY . .
 # Expose the port the app runs on
 EXPOSE 8000
 
-# Start the Django development server
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+# Install Nginx
+RUN apt-get update && apt-get install -y nginx
+
+# Copy the Nginx configuration file
+COPY ./nginx/nginx.conf /etc/nginx/conf.d/default.conf
+
+# Start Gunicorn and Nginx using a script
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
+CMD ["/start.sh"]
