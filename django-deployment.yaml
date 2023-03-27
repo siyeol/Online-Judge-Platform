@@ -13,7 +13,7 @@ spec:
         app: django-app
     spec:
       containers:
-      - name: django-container
+      - name: django-nginx-container
         image: siyeol13/ojp
         ports:
-        - containerPort: 8000
+        - containerPort: 80
