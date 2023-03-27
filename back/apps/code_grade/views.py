@@ -12,8 +12,7 @@ def code_grade(request):
 
     isProhibitLib = CodeScore.check_imports(code)
     if isProhibitLib:
-        result_json = json.dumps({"result": isProhibitLib})
-        return JsonResponse(result_json, safe=False)
+        return JsonResponse({"result": isProhibitLib}, safe=False)
     
     class_id = code_json["class_id"]
     assign_id = code_json["assign_id"]
@@ -29,6 +28,5 @@ def code_grade(request):
         if isHidden == 0:
             tc_list.append(CodeScore.check_testcase(file_path, tcIN, tcOUT))
 
-    result_json = json.dumps({"result": tc_list})
-    return JsonResponse(result_json, safe=False)
+    return JsonResponse({"result": tc_list}, safe=False)
 
