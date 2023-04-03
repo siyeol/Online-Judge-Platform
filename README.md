@@ -27,6 +27,7 @@ https://user-images.githubusercontent.com/33966473/213870444-9d897569-a5a2-40da-
 2. React
 3. SQLite
 4. OpenAI-Codex
-
+5. Docker
+6. Kubernetes
 
 **자세한 사항은 Design Specification 문서를 참고해주시면 감사하겠습니다.**
